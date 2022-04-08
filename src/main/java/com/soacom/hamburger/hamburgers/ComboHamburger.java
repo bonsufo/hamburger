@@ -12,8 +12,8 @@ import java.util.List;
  * Author: Fred Bonsu
  */
 public class ComboHamburger extends Hamburger {
-    private String chips;
-    private String drinks;
+    private final String chips;
+    private final String drinks;
 
     public ComboHamburger(String chips, String drinks) {
         this.chips = chips;
