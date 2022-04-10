@@ -17,12 +17,9 @@ class ComboHamburgerTest {
 
     @Test
     void addToppingAndAdditions() {
-        ComboHamburger comboHamburger = new ComboHamburger("French fries", "Fanta");
-        comboHamburger.setBurgerName("Combo Hamburger");
-        comboHamburger.setBread(BreadType.Ciabatt);
-        comboHamburger.setMeat(MeatType.KobeBeef);
+        ComboHamburger comboHamburger = new ComboHamburger("Combo Hamburger",
+                MeatType.KobeBeef, BreadType.Ciabatt, "French fries", "Fanta");
 
-//        cheese, sauces, lettuce, tomato, union
         BigDecimal totalPrice = comboHamburger.calculateTotalPrice();
         comboHamburger.printReceipt();
         assertTrue(comboHamburger.getToppingsAndAdditions().contains("Fanta"));

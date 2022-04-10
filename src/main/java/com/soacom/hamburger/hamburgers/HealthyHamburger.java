@@ -1,7 +1,10 @@
 package com.soacom.hamburger.hamburgers;
 
+import com.soacom.hamburger.commons.BreadType;
+import com.soacom.hamburger.commons.MeatType;
 import com.soacom.hamburger.utils.PriceCalculatorUtils;
 import com.soacom.hamburger.utils.ReceiptUtils;
+import lombok.NonNull;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -15,6 +18,10 @@ import static com.soacom.hamburger.commons.Constants.MAX_TOPPINGS_HEALTHY;
  * Time: 17:14
  */
 public class HealthyHamburger extends Hamburger{
+    public HealthyHamburger(@NonNull String burgerName, @NonNull MeatType meat, @NonNull BreadType bread) {
+        super(burgerName, meat, bread);
+    }
+
     public void addToppings(List<String> toppings) {
         if (toppings.size() > MAX_TOPPINGS_HEALTHY) {
             throw new IndexOutOfBoundsException("You have exceeded the maximum toppings allowed");

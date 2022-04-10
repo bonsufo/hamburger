@@ -18,14 +18,8 @@ class HealthyHamburgerTest {
 
     @Test
     void addToppings() {
-        HealthyHamburger healthyHamburger = new HealthyHamburger();
-        healthyHamburger.setBurgerName("Healthy Hamburger");
-        healthyHamburger.setBread(BreadType.Ciabatt);
-        healthyHamburger.setMeat(MeatType.KobeBeef);
-
-//        cheese, sauces, lettuce, tomato, union
+        HealthyHamburger healthyHamburger = new HealthyHamburger("Healthy Hamburger", MeatType.KobeBeef, BreadType.Ciabatt);
         List<String> toppings = new ArrayList<>();
-//        cheese, sauces, lettuce, tomato, union
         toppings.add("cheese");
         toppings.add("sauces");
         toppings.add("lettuce");
@@ -39,12 +33,8 @@ class HealthyHamburgerTest {
 
     @Test
     void addTopping() {
-        HealthyHamburger healthyHamburger = new HealthyHamburger();
-        healthyHamburger.setBurgerName("Healthy Hamburger");
-        healthyHamburger.setBread(BreadType.Ciabatt);
-        healthyHamburger.setMeat(MeatType.KobeBeef);
+        HealthyHamburger healthyHamburger = new HealthyHamburger("Healthy Hamburger", MeatType.KobeBeef, BreadType.Ciabatt);
 
-//        cheese, sauces, lettuce, tomato, union
         healthyHamburger.addTopping("cheese");
         healthyHamburger.addTopping("sauces");
         healthyHamburger.addTopping("union");
@@ -57,9 +47,7 @@ class HealthyHamburgerTest {
 
     @Test
     void when_exceededMaxTopping_then_IndexOutOfBoundsException_thrown() {
-        HealthyHamburger healthyHamburger = new HealthyHamburger();
-        healthyHamburger.setBread(BreadType.Brioche);
-        healthyHamburger.setMeat(MeatType.BlackAngus);
+        HealthyHamburger healthyHamburger = new HealthyHamburger("Healthy Hamburger", MeatType.BlackAngus, BreadType.Brioche);
 
         List<String> toppings = new ArrayList<>();
         toppings.add("cheese");

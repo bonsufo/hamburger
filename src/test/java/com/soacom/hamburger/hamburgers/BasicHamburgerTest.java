@@ -18,12 +18,8 @@ class BasicHamburgerTest {
 
     @Test
     void maxToppingsBasicBurger() {
-        BasicHamburger basicHamburger = new BasicHamburger();
-        basicHamburger.setBread(BreadType.Brioche);
-        basicHamburger.setMeat(MeatType.BlackAngus);
-
+        BasicHamburger basicHamburger = new BasicHamburger("Basic Burger", MeatType.BlackAngus, BreadType.Brioche);
         List<String> toppings = new ArrayList<>();
-//        cheese, sauces, lettuce, tomato, union
         toppings.add("cheese");
         toppings.add("sauces");
         toppings.add("lettuce");
@@ -36,13 +32,8 @@ class BasicHamburgerTest {
 
     @Test
     void less_toppings_than_max() {
-        BasicHamburger basicHamburger = new BasicHamburger();
-        basicHamburger.setBurgerName("Basic Hamburger");
-        basicHamburger.setBread(BreadType.Ciabatt);
-        basicHamburger.setMeat(MeatType.KobeBeef);
-
+        BasicHamburger basicHamburger = new BasicHamburger("Basic Burger", MeatType.KobeBeef, BreadType.Ciabatt);
         List<String> toppings = new ArrayList<>();
-//        cheese, sauces, lettuce, tomato, union
         toppings.add("cheese");
         toppings.add("sauces");
         toppings.add("tomato");
@@ -55,12 +46,7 @@ class BasicHamburgerTest {
 
     @Test
     void one_at_a_time_toppings() {
-        BasicHamburger basicHamburger = new BasicHamburger();
-        basicHamburger.setBurgerName("Basic Hamburger");
-        basicHamburger.setBread(BreadType.Ciabatt);
-        basicHamburger.setMeat(MeatType.KobeBeef);
-
-//        cheese, sauces, lettuce, tomato, union
+        BasicHamburger basicHamburger = new BasicHamburger("Basic Burger", MeatType.KobeBeef, BreadType.Ciabatt);
         basicHamburger.addTopping("cheese");
         basicHamburger.addTopping("sauces");
         basicHamburger.addTopping("union");
@@ -73,7 +59,7 @@ class BasicHamburgerTest {
 
     @Test
     void when_exceededMaxTopping_then_IndexOutOfBoundsException_thrown() {
-        BasicHamburger basicHamburger = new BasicHamburger();
+        BasicHamburger basicHamburger = new BasicHamburger("Basic Burger", MeatType.BlackAngus, BreadType.Brioche);
         basicHamburger.setBread(BreadType.Brioche);
         basicHamburger.setMeat(MeatType.BlackAngus);
 
@@ -84,9 +70,7 @@ class BasicHamburgerTest {
         toppings.add("tomato");
         toppings.add("union");
 
-        Exception exception = assertThrows(IndexOutOfBoundsException.class, () -> {
-            basicHamburger.addToppings(toppings);
-        });
+        Exception exception = assertThrows(IndexOutOfBoundsException.class, () -> basicHamburger.addToppings(toppings));
 
         String expectedMessage = "You have exceeded the maximum toppings allowed";
         String actualMessage = exception.getMessage();
