@@ -5,6 +5,7 @@ import com.soacom.hamburger.commons.MeatType;
 import com.soacom.hamburger.utils.PriceCalculatorUtils;
 import com.soacom.hamburger.utils.ReceiptUtils;
 import lombok.NonNull;
+import org.junit.platform.commons.util.StringUtils;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -22,6 +23,15 @@ public class ComboHamburger extends Hamburger {
         super(burgerName, meat, bread);
         this.chips = chips;
         this.drinks = drinks;
+        if (StringUtils.isBlank(burgerName)) {
+            throw new IllegalArgumentException("Burger name cannot be blank");
+        }
+        if (StringUtils.isBlank(chips)) {
+            throw new IllegalArgumentException("Chips cannot be blank. You must add chips");
+        }
+        if (StringUtils.isBlank(drinks)) {
+            throw new IllegalArgumentException("Drink cannot be blank. You must add drink");
+        }
         addToppingAndAdditions();
     }
 

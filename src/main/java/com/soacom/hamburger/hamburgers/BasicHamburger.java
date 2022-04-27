@@ -5,6 +5,7 @@ import com.soacom.hamburger.commons.MeatType;
 import com.soacom.hamburger.utils.PriceCalculatorUtils;
 import com.soacom.hamburger.utils.ReceiptUtils;
 import lombok.NonNull;
+import org.junit.platform.commons.util.StringUtils;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -19,6 +20,9 @@ public class BasicHamburger extends Hamburger {
 
     public BasicHamburger(@NonNull String burgerName, @NonNull MeatType meat, @NonNull BreadType bread) {
         super(burgerName, meat, bread);
+        if (StringUtils.isBlank(burgerName)) {
+            throw new IllegalArgumentException("Burger name cannot be blank");
+        }
     }
 
     public void addToppings(List<String> toppings) {
